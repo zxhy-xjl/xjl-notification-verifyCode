@@ -4,7 +4,7 @@
 
 	<groupId>com.zxhy.xjl</groupId>
 	<artifactId>xjl-notification-verifyCode</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 	<packaging>jar</packaging>
 
 	<name>xjl-notification-verifyCode</name>
@@ -48,14 +48,26 @@
 					<encoding>${file_encoding}</encoding>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 	<distributionManagement>
-	  <repository>
-	    <id>user-releases</id>
-	    <name>user-releases</name>
-	    <url>http://139.196.174.28:8081/nexus/content/repositories/releases/</url>
-	  </repository>
+		<repository>
+			<id>user-releases</id>
+			<url>http://139.196.174.28:8081/nexus/content/repositories/releases/</url>
+		</repository>
 	</distributionManagement>
-	
+
 </project>
