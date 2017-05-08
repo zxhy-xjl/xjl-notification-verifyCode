@@ -1,4 +1,4 @@
-package com.zxhy.xjl.notification.verifyCode;
+package com.xjl.notification.verifyCode;
 
 /**
  * 验证码接口

@@ -1,4 +1,4 @@
-package com.zxhy.xjl.notification.verifyCode;
+package com.xjl.notification.verifyCode;
 
 import java.util.Calendar;
 import java.util.HashMap;
