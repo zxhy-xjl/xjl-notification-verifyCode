@@ -31,14 +31,23 @@ public class VerifyCodeImpl implements VerifyCode {
 		}
 		thread = new Thread(){
 			public void run() {
-				if (!VerifyCodeImpl.verifyCodeDuration.isEmpty()){
-					Calendar currentCalendar = Calendar.getInstance();
-					Set<String> keys = VerifyCodeImpl.verifyCodeDuration.keySet();
-					for (String key : keys) {
-						Calendar calendar = VerifyCodeImpl.verifyCodeDuration.get(key);
-						if (currentCalendar.after(calendar)){
-							VerifyCodeImpl.verifyCodeDuration.remove(key);
+				//一直在后台跑
+				while(true){
+					if (!VerifyCodeImpl.verifyCodeDuration.isEmpty()){
+						Calendar currentCalendar = Calendar.getInstance();
+						Set<String> keys = VerifyCodeImpl.verifyCodeDuration.keySet();
+						for (String key : keys) {
+							Calendar calendar = VerifyCodeImpl.verifyCodeDuration.get(key);
+							if (currentCalendar.after(calendar)){
+								VerifyCodeImpl.verifyCodeDuration.remove(key);
+							}
 						}
+					}
+					try {
+						//休息5秒继续检查
+						sleep(1000*5);
+					} catch (InterruptedException e) {
+						
 					}
 				}
 			};
